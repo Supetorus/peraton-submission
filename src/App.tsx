@@ -1,22 +1,26 @@
 import { useState } from "react";
 import List from "./List";
 import Form from "./Form";
+import { Item } from "./Item";
 
 function App() {
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
 
-  const addItem = (item: string) => {
-    if (item.trim() === "") return;
+  const addItem = (item: Item) => {
     setItems([...items, item]);
   };
 
   const clearList = () => setItems([]);
 
+  const removeItem = (id: number) => {
+    setItems(items.filter(item => item.id !== id));
+  }
+
   return (
     <div className="container">
       {/* left */}
-      <div id="left-section" className="flex-center-column column">
-        <List items={items} />
+      <div id="left-section" className="column">
+        <List items={items} removeItem={removeItem}/>
       </div>
 
       {/* right */}
@@ -24,7 +28,7 @@ function App() {
         <div className="space-below">
           <Form buttonText="Add" onSubmit={addItem} />
         </div>
-        <button onClick={clearList}>Clear</button>
+        <button className="text-button" onClick={clearList}>Clear</button>
       </div>
     </div>
   );

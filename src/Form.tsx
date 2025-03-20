@@ -1,13 +1,17 @@
+import { Item, generateId } from "./Item";
+
 interface Props {
   buttonText: string;
-  onSubmit: (input: string) => void;
+  onSubmit: (input: Item) => void;
 }
 
 function Form({ buttonText, onSubmit }: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    onSubmit(formData.get("userInput") as string);
+    const userInput = formData.get("userInput") as string;
+    if (userInput === "") return;
+    onSubmit({value: userInput, id: generateId()});
     (event.target as HTMLFormElement).reset();
   };
 
@@ -23,7 +27,7 @@ function Form({ buttonText, onSubmit }: Props) {
         name="userInput"
         className="space-below"
       />
-      <button type="submit">{buttonText}</button>
+      <button className="text-button" type="submit">{buttonText}</button>
     </form>
   );
 }

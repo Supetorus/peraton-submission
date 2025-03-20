@@ -10,12 +10,6 @@ body {
 
 button {
   border-radius: 1rem;
-  min-height: 2rem;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  font-size: 1.5rem;
   border-style: solid;
   border-color: transparent;
   color: #5a7684;
@@ -30,6 +24,16 @@ button:hover {
 button:active {
   border-style: solid;
   border-color: #5a7684;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }
 
 .container {
@@ -56,12 +60,16 @@ button:active {
 .appended-item {
   font-size: 1.5rem;
   margin: 0.5rem;
-  padding: 0.8rem;
+  padding: 0.5rem;
+  min-width: fit-content;
   max-width: 90%;
   border-radius: 1rem;
   overflow-wrap: anywhere;
   color: #5a7684;
   background-color: #92afd7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .full-width {
@@ -70,6 +78,26 @@ button:active {
 
 .space-below {
   margin-bottom: 1rem;
+}
+
+.text-button {
+  border-radius: 1rem;
+  min-height: 2rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
+  border-style: solid;
+  border-color: transparent;
+  color: #5a7684;
+  background-color: #92afd7;
+  font-weight: bold;
+}
+
+.icon-button {
+  height: fit-content;
+  width: fit-content;
 }
 
 #userInput {
